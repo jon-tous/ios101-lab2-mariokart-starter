@@ -60,18 +60,11 @@ class ViewController: UIViewController,
   // Called when user taps on the mushroom
   @IBAction func didTapMushroom(_ sender: UITapGestureRecognizer) {
     animateMushroom()
-    
-    // Exercise 1: Assign the result of MushroomGenerator.maybeGenerateMushroomPowerup()
-    // to a variable. Print something if it's not nil
-      let powerup = MushroomGenerator.maybeGenerateMushroomPowerup()
-      if powerup != nil {
-          print("Got a powerup!")
-      } else {
-          print("Didn't get a powerup!")
-      }
-    
-    // Exercise 2: Use the powerup on Mario using the useMushroomPowerupOnMario function
-    // ...
+    guard let powerup = MushroomGenerator.maybeGenerateMushroomPowerup() else {
+        print("Didn't get powerup")
+        return
+    }
+    useMushroomPowerupOnMario(powerup: powerup)
   }
   
   private func useMushroomPowerupOnMario(powerup: MushroomPowerup) {
