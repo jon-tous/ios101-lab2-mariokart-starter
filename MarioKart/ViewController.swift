@@ -153,7 +153,12 @@ class ViewController: UIViewController,
   
   // Exercise 4: Implement applyNumKartsSetting to show the correct number of karts
   func applyNumKartsSetting(_ settings: [String : Any]) {
-    
+      guard let numKarts = settings["numKarts"] as? Int else {
+          assertionFailure("Expecting Int, but got nil")
+          return
+      }
+      kartView0.isHidden = numKarts < 2
+      kartView2.isHidden = numKarts < 3
   }
   
   // Exercise 5: Implement applyKartSizeSetting to set the correct kart size
