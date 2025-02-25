@@ -168,9 +168,13 @@ class ViewController: UIViewController,
         kartView2.transform = transform
     }
   
-  // Exercise 6: Implement applySpeedMultiplierSetting to set the correct speed
-  func applySpeedMultiplierSetting(_ settings: [String : Any]) {
-    
-  }
+    // Exercise 6: Implement applySpeedMultiplierSetting to set the correct speed
+    func applySpeedMultiplierSetting(_ settings: [String : Any]) {
+        guard let speedMultiplier = settings["speedMultiplier"] as? Int else {
+            assertionFailure("Expecting Int, but got nil")
+            return
+        }
+        self.speedMultiplier = Double(speedMultiplier)
+    }
 }
 
