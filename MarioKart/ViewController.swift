@@ -144,10 +144,16 @@ class ViewController: UIViewController,
     applySpeedMultiplierSetting(settings)
   }
   
-  // Exercise 4: Implement applyNumKartsSetting to show the correct number of karts
-  func applyNumKartsSetting(_ settings: [String : Any]) {
-    
-  }
+    // Exercise 4: Implement applyNumKartsSetting to show the correct number of karts
+    func applyNumKartsSetting(_ settings: [String : Any]) {
+        guard let numKarts = settings["numKarts"] as? Int else {
+            assertionFailure("Expecting Int, but got nil")
+            return
+        }
+        // unhide the correct number of karts
+        kartView0.isHidden = numKarts < 2
+        kartView2.isHidden = numKarts < 3
+    }
   
   // Exercise 5: Implement applyKartSizeSetting to set the correct kart size
   func applyKartSizeSetting(_ settings: [String : Any]) {
